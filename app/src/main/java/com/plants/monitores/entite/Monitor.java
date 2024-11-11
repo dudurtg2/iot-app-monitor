@@ -1,4 +1,4 @@
-package com.plants.monitores;
+package com.plants.monitores.entite;
 
 public class Monitor {
     private int id;

@@ -1,32 +1,23 @@
 package com.plants.monitores;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.os.Bundle;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import androidx.activity.EdgeToEdge;
-import android.os.Bundle;
+
 import android.os.Handler;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
-import java.util.List;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.plants.monitores.databinding.ActivityMainBinding;
-
-import java.util.List;
+import com.plants.monitores.entite.Monitor;
+import com.plants.monitores.repository.MonitorApi;
+import com.plants.monitores.servise.RetrofitClient;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView editText;
     private Handler handler;
     private Runnable runnable;
     private ActivityMainBinding binding;
@@ -85,27 +76,22 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (monitorMaisRecente != null) {
-
-                        String statusBomba = monitorMaisRecente.getPampStatus() ? "LIGADA" : "DESLIGADA";
-                        String statusLuz = monitorMaisRecente.getLightStatus() ? "LIGADA" : "DESLIGADA";
-
-                        String data = "ID: " + monitorMaisRecente.getId() + "\n" +
-                                "TEMPERATURA: " + monitorMaisRecente.getTemperature() + "C゜\n" +
-                                "UMIDADE: " + monitorMaisRecente.getHumidity() + "\n" +
-                                "UMID DO SOLO: " + monitorMaisRecente.getSolidhumidity() + "\n\n" +
-                                "STATUS DA BOMBA: " + "\n" + statusBomba + "\n\n" +
-                                "STATUS DA LUZ: " + "\n" + statusLuz + "\n\n" +
-                                "DATA: " + monitorMaisRecente.getDate();
-                        binding.Texto.setText(data);
+                        binding.TextoTemp.setText( "TEMPERATURA: " + monitorMaisRecente.getTemperature() + "C゜");
+                        binding.TextoUmidade.setText( "UMIDADE: " + monitorMaisRecente.getHumidity() + "%");
+                        binding.TextoData.setText( "DATA: " + monitorMaisRecente.getDate());
                     }
                 } else {
-                    binding.Texto.setText("Falha ao obter dados");
+                    binding.TextoTemp.setText("Falha ao obter dados");
+                    binding.TextoUmidade.setText("Falha ao obter dados");
+                    binding.TextoData.setText("Falha ao obter dados");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Monitor>> call, Throwable t) {
-                binding.Texto.setText("Erro: " + t.getMessage());
+                binding.TextoTemp.setText("Erro: " + t.getMessage());
+                binding.TextoUmidade.setText("Erro: " + t.getMessage());
+                binding.TextoData.setText("Erro: " + t.getMessage());
             }
         });
     }

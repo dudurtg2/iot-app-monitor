@@ -1,4 +1,6 @@
-package com.plants.monitores;
+package com.plants.monitores.repository;
+
+import com.plants.monitores.entite.Monitor;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
