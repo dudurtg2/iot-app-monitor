@@ -80,6 +80,19 @@ public class MainActivity extends AppCompatActivity {
                         binding.TextoUmidade.setText( "UMIDADE: " + monitorMaisRecente.getHumidity() + "%");
                         binding.TextoData.setText( "DATA: " + monitorMaisRecente.getDate());
                     }
+
+
+                    if (monitorMaisRecente.getLightStatus()) {
+                        binding.ImagenLuz.setImageResource(R.drawable.lamp);
+                    } else {
+                        binding.ImagenLuz.setImageResource(R.drawable.lamp_off);
+                    }
+
+                    if (monitorMaisRecente.getPampStatus()) {
+                        binding.ImagenPamp.setImageResource(R.drawable.pamp);
+                    } else {
+                        binding.ImagenPamp.setImageResource(R.drawable.pamp_off);
+                    }
                 } else {
                     binding.TextoTemp.setText("Falha ao obter dados");
                     binding.TextoUmidade.setText("Falha ao obter dados");
