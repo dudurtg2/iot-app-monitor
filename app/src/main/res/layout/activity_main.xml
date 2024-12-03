@@ -5,87 +5,85 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A0FFD7"
+    android:background=""
     tools:context=".MainActivity">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="800px"
+        android:background="@drawable/BG" />
+
+    <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="315dp"
+        android:layout_height="332dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/plant"
+        android:src="@drawable/planta"
         app:layout_constraintBottom_toTopOf="@+id/ImagenPamp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/ImagenPamp"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/pamp"
-        app:layout_constraintBottom_toBottomOf="@+id/ImagenLuz"
-        app:layout_constraintEnd_toStartOf="@+id/ImagenLuz"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_width="160dp"
+        android:layout_height="126dp"
+        android:src="@drawable/agua"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="421dp" />
 
     <ImageView
         android:id="@+id/ImagenLuz"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/lamp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ImagenPamp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_width="160dp"
+        android:layout_height="126dp"
+        android:src="@drawable/luz"
+        tools:layout_editor_absoluteX="221dp"
+        tools:layout_editor_absoluteY="421dp" />
+
 
     <TextView
         android:id="@+id/TextoTemp"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="Hello World!"
+        android:fontFamily="@font/abyssinica_sil"
+        android:text="Luz"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImagenPamp" />
-
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImagenLuz"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenLuz"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="@+id/ImagenLuz"
+        app:layout_constraintTop_toTopOf="@+id/ImagenLuz"
+        app:layout_constraintVertical_bias="0.86" />
 
     <TextView
         android:id="@+id/TextoData"
-        android:layout_width="0dp"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="18dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/TextoTemp"
-        app:layout_constraintStart_toStartOf="@+id/TextoTemp"
-        app:layout_constraintTop_toBottomOf="@+id/TextoTemp" />
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="611dp" />
 
     <TextView
         android:id="@+id/TextoUmidade"
-        android:layout_width="0dp"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:layout_marginBottom="64dp"
         android:text="TextView"
-        android:textSize="18dp"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/TextoData"
-        app:layout_constraintStart_toStartOf="@+id/TextoData"
-        app:layout_constraintTop_toBottomOf="@+id/TextoData" />
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="643dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
