@@ -1,5 +1,6 @@
 package com.plants.monitores;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +9,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import androidx.activity.EdgeToEdge;
+import androidx.core.content.ContextCompat;
 
 import android.os.Handler;
+import android.widget.Toast;
 
 import com.plants.monitores.databinding.ActivityMainBinding;
 import com.plants.monitores.entite.Monitor;
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable runnable;
     private ActivityMainBinding binding;
     private static final int INTERVALO_ATUALIZACAO = 3000;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         handler = new Handler();
+        context = this;
 
         // Criar a tarefa repetida
         runnable = new Runnable() {
             @Override
             public void run() {
                 // Chamar a API
-                atualizarMonitores();
+                atualizarMonitores(context);
 
                 // Reagendar o Runnable para rodar novamente após o intervalo definido
                 handler.postDelayed(this, INTERVALO_ATUALIZACAO);
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Método para atualizar os monitores
-    private void atualizarMonitores() {
+    private void atualizarMonitores(Context context) {
         MonitorApi monitorApi = RetrofitClient.getRetrofitInstance().create(MonitorApi.class);
         Call<List<Monitor>> call = monitorApi.getMonitors();
 
@@ -69,42 +74,68 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Monitor monitorMaisRecente = null;
+                    int Count = 0;
+                    String dia = "";
                     for (Monitor monitor : monitorList) {
                         if (monitorMaisRecente == null || monitor.getId() > monitorMaisRecente.getId()) {
                             monitorMaisRecente = monitor;
                         }
+                        if (dia.equals("")) {
+                            Count++;
+                            dia = monitor.getDate();
+                        } else if (!dia.equals(monitor.getDate())) {
+                            Count++;
+                            dia = monitor.getDate();
+                        }
+
                     }
+
+                    binding.diaImput.setText(String.valueOf(Count));
 
                     if (monitorMaisRecente != null) {
-                        binding.TextoTemp.setText( "TEMPERATURA: " + monitorMaisRecente.getTemperature() + "C゜");
-                        binding.TextoUmidade.setText( "UMIDADE: " + monitorMaisRecente.getHumidity() + "%");
-                        binding.TextoData.setText( "DATA: " + monitorMaisRecente.getDate());
-                    }
+                        binding.TemperaturaImput.setText(monitorMaisRecente.getTemperature() + "°");
+                        binding.HumidityImput.setText(monitorMaisRecente.getHumidity() + "%");
 
+                        int whiteColor = ContextCompat.getColor(context, R.color.white);
+                        int blackColor = ContextCompat.getColor(context, R.color.black);
 
-                    if (monitorMaisRecente.getLightStatus()) {
-                        binding.ImagenLuz.setImageResource(R.drawable.lamp);
+                        if (monitorMaisRecente.isLightStatus()) {
+                            binding.LuzIndicador.setTextColor(whiteColor);
+                        } else {
+                            binding.LuzIndicador.setTextColor(blackColor);
+                        }
+
+                        if (monitorMaisRecente.isHumidityStatus()) {
+                            binding.HumificadorIndicador.setTextColor(whiteColor);
+                        } else {
+                            binding.HumificadorIndicador.setTextColor(blackColor);
+                        }
+
+                        if (monitorMaisRecente.isVentStatus()) {
+                            binding.VentiladorIndicador.setTextColor(whiteColor);
+                        } else {
+                            binding.VentiladorIndicador.setTextColor(blackColor);
+                        }
+
+                        if (monitorMaisRecente.isPampStatus()) {
+                            binding.AguaIndicador.setTextColor(whiteColor);
+                            binding.info.setText("A umidade do solo atual registrada pelo sensor é essencial para monitorar as condições ideais.\nAtualmente estar em "+monitorMaisRecente.getSolidhumidity()+"%, sua estufa precisa de um pouco de água.");
+                        } else {
+                            binding.AguaIndicador.setTextColor(blackColor);
+                            binding.info.setText("A umidade do solo atual registrada pelo sensor é essencial para monitorar as condições ideais.\nAtualmente estar em "+monitorMaisRecente.getSolidhumidity()+"%, sua estufa está com a umidade ideal.");
+
+                        }
                     } else {
-                        binding.ImagenLuz.setImageResource(R.drawable.lamp_off);
-                    }
-
-                    if (monitorMaisRecente.getPampStatus()) {
-                        binding.ImagenPamp.setImageResource(R.drawable.pamp);
-                    } else {
-                        binding.ImagenPamp.setImageResource(R.drawable.pamp_off);
+                        Toast.makeText(context, "Nenhum monitor encontrado", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    binding.TextoTemp.setText("Falha ao obter dados");
-                    binding.TextoUmidade.setText("Falha ao obter dados");
-                    binding.TextoData.setText("Falha ao obter dados");
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<Monitor>> call, Throwable t) {
-                binding.TextoTemp.setText("Erro: " + t.getMessage());
-                binding.TextoUmidade.setText("Erro: " + t.getMessage());
-                binding.TextoData.setText("Erro: " + t.getMessage());
+
             }
         });
     }

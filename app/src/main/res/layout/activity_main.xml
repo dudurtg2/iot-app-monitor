@@ -5,17 +5,27 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background=""
+    android:background="@color/white"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/ImagenPamp"
+        android:layout_width="160dp"
+        android:layout_height="126dp"
+        android:src="@drawable/agua"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/ImagenLuz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ImagenLuz" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
-        android:layout_marginBottom="350dp"
-        android:background="@drawable/BG"
+        android:layout_marginBottom="420dp"
+        android:background="@drawable/fundo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,48 +39,60 @@
         android:layout_height="0dp"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
         android:src="@drawable/planta"
         app:layout_constraintBottom_toTopOf="@+id/ImagenPamp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/ImagenPamp"
+        android:id="@+id/ImagenVentilador"
         android:layout_width="160dp"
         android:layout_height="126dp"
-        android:src="@drawable/agua"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/humidady"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/ImagenLuz"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ImagenLuz" />
+        app:layout_constraintEnd_toEndOf="@+id/ImagenLuz"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ImagenLuz"
+        app:layout_constraintTop_toBottomOf="@+id/ImagenLuz" />
+
+    <ImageView
+        android:id="@+id/ImagenHumificador"
+        android:layout_width="160dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/vent"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenPamp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ImagenPamp"
+        app:layout_constraintTop_toBottomOf="@+id/ImagenPamp" />
 
     <ImageView
         android:id="@+id/ImagenLuz"
         android:layout_width="160dp"
         android:layout_height="126dp"
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="-35dp"
         android:src="@drawable/luz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ImagenPamp"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/TextoTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/abyssinica_sil"
         android:text="Luz"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="32dp"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/ImagenLuz"
-
         app:layout_constraintEnd_toEndOf="@+id/ImagenLuz"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ImagenLuz"
@@ -78,17 +100,15 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/abyssinica_sil"
         android:text="Água"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="32dp"
-
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/ImagenPamp"
         app:layout_constraintEnd_toEndOf="@+id/ImagenPamp"
         app:layout_constraintHorizontal_bias="0.0"
@@ -97,35 +117,49 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/TextoData"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="766dp" />
-
-    <TextView
-        android:id="@+id/TextoUmidade"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="819dp" />
-
-    <TextView
-        android:id="@+id/aguaIndicador"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/abyssinica_sil"
+        android:text="Ventilador"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImagenHumificador"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenHumificador"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ImagenHumificador"
+        app:layout_constraintTop_toTopOf="@+id/ImagenHumificador"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/abyssinica_sil"
+        android:text="Humificador"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImagenVentilador"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenVentilador"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ImagenVentilador"
+        app:layout_constraintTop_toTopOf="@+id/ImagenVentilador"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/LuzIndicador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
         android:layout_marginEnd="16dp"
         android:text="●"
         android:textColor="@color/white"
-        android:textSize="32dp"
+        android:textSize="64dp"
         app:layout_constraintBottom_toBottomOf="@+id/ImagenLuz"
         app:layout_constraintEnd_toEndOf="@+id/ImagenLuz"
         app:layout_constraintHorizontal_bias="1.0"
@@ -134,26 +168,59 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/aguaIndicador"
+        android:id="@+id/AguaIndicador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
         android:layout_marginEnd="16dp"
         android:text="●"
         android:textColor="@color/white"
-        android:textSize="32dp"
+        android:textSize="64dp"
         app:layout_constraintBottom_toBottomOf="@+id/ImagenPamp"
         app:layout_constraintEnd_toEndOf="@+id/ImagenPamp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/ImagenPamp"
         app:layout_constraintTop_toTopOf="@+id/ImagenPamp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/VentiladorIndicador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="16dp"
+        android:text="●"
+        android:textColor="@color/white"
+        android:textSize="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImagenHumificador"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenHumificador"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ImagenHumificador"
+        app:layout_constraintTop_toTopOf="@+id/ImagenHumificador"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/HumificadorIndicador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="16dp"
+        android:text="●"
+        android:textColor="@color/white"
+        android:textSize="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImagenVentilador"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenVentilador"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ImagenVentilador"
+        app:layout_constraintTop_toTopOf="@+id/ImagenVentilador"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/diaImput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="70dp"
         android:fontFamily="serif"
         android:text="10"
         android:textColor="@color/white"
@@ -162,7 +229,8 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/textView4"
+
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -173,5 +241,82 @@
         android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/diaImput"
         app:layout_constraintStart_toEndOf="@+id/diaImput" />
+
+    <TextView
+        android:id="@+id/TemperaturaImput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="10°"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/HumidityImput" />
+
+    <TextView
+        android:id="@+id/HumidityImput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="10%"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ImagenVentilador"
+        app:layout_constraintStart_toStartOf="@+id/ImagenHumificador"
+        app:layout_constraintTop_toBottomOf="@+id/ImagenHumificador" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/abyssinica_sil"
+        android:text="Informações"
+        android:textColor="#00843F"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="A umidade do solo atual registrada pelo sensor é essencial para monitorar as condições ideais.\nAtualmente estar em 15%, sua planta precisa de um pouco de água."
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="🪴"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

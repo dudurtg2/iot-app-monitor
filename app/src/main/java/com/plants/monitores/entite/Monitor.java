@@ -8,8 +8,11 @@ public class Monitor {
     private String date;
     private boolean lightStatus;
     private boolean pampStatus;
-
-    public Monitor(int id, float temperature, float humidity, float solidhumidity, String date, boolean lightStatus, boolean pampStatus) {
+    private boolean humidityStatus;
+    private boolean ventStatus;
+    public Monitor() {
+    }
+    public Monitor(int id, float temperature, float humidity, float solidhumidity, String date, boolean lightStatus, boolean pampStatus, boolean humidityStatus, boolean ventStatus) {
         this.id = id;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -17,10 +20,12 @@ public class Monitor {
         this.date = date;
         this.lightStatus = lightStatus;
         this.pampStatus = pampStatus;
+        this.humidityStatus = humidityStatus;
+        this.ventStatus = ventStatus;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {
@@ -28,7 +33,7 @@ public class Monitor {
     }
 
     public float getTemperature() {
-        return this.temperature;
+        return temperature;
     }
 
     public void setTemperature(float temperature) {
@@ -36,7 +41,7 @@ public class Monitor {
     }
 
     public float getHumidity() {
-        return this.humidity;
+        return humidity;
     }
 
     public void setHumidity(float humidity) {
@@ -44,7 +49,7 @@ public class Monitor {
     }
 
     public float getSolidhumidity() {
-        return this.solidhumidity;
+        return solidhumidity;
     }
 
     public void setSolidhumidity(float solidhumidity) {
@@ -52,28 +57,42 @@ public class Monitor {
     }
 
     public String getDate() {
-        return this.date;
+        return date;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
 
-    public boolean getLightStatus() {
-        return this.lightStatus;
+    public boolean isLightStatus() {
+        return lightStatus;
     }
 
     public void setLightStatus(boolean lightStatus) {
         this.lightStatus = lightStatus;
     }
 
-    public boolean getPampStatus() {
-        return this.pampStatus;
+    public boolean isPampStatus() {
+        return pampStatus;
     }
 
     public void setPampStatus(boolean pampStatus) {
         this.pampStatus = pampStatus;
     }
 
+    public boolean isHumidityStatus() {
+        return humidityStatus;
+    }
 
+    public void setHumidityStatus(boolean humidityStatus) {
+        this.humidityStatus = humidityStatus;
+    }
+
+    public boolean isVentStatus() {
+        return ventStatus;
+    }
+
+    public void setVentStatus(boolean ventStatus) {
+        this.ventStatus = ventStatus;
+    }
 }
