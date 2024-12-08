@@ -1,0 +1,8 @@
+<resources>
+    <!-- Estilo customizado para o Spinner -->
+    <style name="CustomSpinnerStyle">
+        <item name="android:background">@drawable/rounded_squard_black</item> <!-- Fundo customizado -->
+        <item name="android:textColor">@color/white</item> <!-- Cor do texto -->
+        <item name="android:textSize">16sp</item> <!-- Tamanho do texto -->
+    </style>
+</resources>

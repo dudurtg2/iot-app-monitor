@@ -1,6 +1,7 @@
 package com.plants.monitores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        binding.imageView3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GraficoActivity.class)));
+        binding.plant.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GraficoActivity.class)));
         handler = new Handler();
         context = this;
 
